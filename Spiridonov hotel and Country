@@ -1,0 +1,82 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace ConsoleApplication1
+{
+    class Hotel
+    {
+        public string Name;
+        public int StarNumber;
+        public string Opisanie;
+        public Country Capital;
+        Country country = new Country();
+        public void Two()
+        {
+            Console.Write("Название отеля: ");
+            Console.Write("Количество звезд: ");
+            Console.Write("Описание отеля: ");
+            Console.Write("Страна:");
+            List<Hotels> listOfUsers = new List<Hotels>()
+            {
+                new Hotels() { Name = Console.ReadLine(), StarNumber = Console.ReadLine(), Opisanie = Console.ReadLine(), Capital = Console.ReadLine() },
+            };
+            public void Three()
+            {
+                for (int i = 0; i < listOfUsers.Count; i++)
+                {
+                    Console.WriteLine(listOfUsers[i].Name + " " + listOfUsers[i].StarNumber + " " + listOfUsers[i].Opisanie + " " + listOfUsers[i].Capital);
+                }
+            }
+        }
+    }
+    class Country
+    {
+        public string country;
+        public string Capital;
+        public void One()
+        {
+            Country Capital = new Country();
+            Console.Write("Название страны: ");
+            Console.Write("Название столицы: ");
+            List<Counts> listOfUsers1 = new List<Counts>()
+            {
+            new Counts() { Country = Console.ReadLine(), Capital = Console.ReadLine() },
+            };
+        }
+        public void Four()
+        {
+            for (int i = 0; i < listOfUsers1.Count; i++)
+            {
+                Console.WriteLine(listOfUsers1[i].Country + " " + listOfUsers1[i].Capital);
+            }
+            Console.ReadKey();
+        }
+    }
+    class Counts
+    {
+        public string Country { get; set; }
+        public string Capital { get; set; }
+    }
+    class Hotels
+    {
+        public string Name { get; set; }
+        public string StarNumber { get; set; }
+        public string Opisanie { get; set; }
+        public string Capital { get; set; }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+                Console.WriteLine("Добавление страны");
+                Console.WriteLine("Добавление отеля");
+                Console.WriteLine("Вывод всех отелей");
+                Console.WriteLine("Вывод всех стран");
+                Console.WriteLine("Выход из программы");
+        }
+    }
+}
