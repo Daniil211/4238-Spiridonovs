@@ -14,6 +14,7 @@ namespace ConsoleApplication1
         public string Opisanie;
         public Country Capital;
         Country country = new Country();
+        List<Hotels> listOfUsers = new List<Hotels>();
         public void Two()
         {
             Console.Write("Название отеля: ");
@@ -24,12 +25,13 @@ namespace ConsoleApplication1
             {
                 new Hotels() { Name = Console.ReadLine(), StarNumber = Console.ReadLine(), Opisanie = Console.ReadLine(), Capital = Console.ReadLine() },
             };
-            public void Three()
+        }
+        public void Three()
+        {
+            Hotel hotel = new Hotel();
+            for (int i = 0; i < hotel.listOfUsers.Count; i++)
             {
-                for (int i = 0; i < listOfUsers.Count; i++)
-                {
-                    Console.WriteLine(listOfUsers[i].Name + " " + listOfUsers[i].StarNumber + " " + listOfUsers[i].Opisanie + " " + listOfUsers[i].Capital);
-                }
+                Console.WriteLine(listOfUsers[i].Name + " " + listOfUsers[i].StarNumber + " " + listOfUsers[i].Opisanie + " " + listOfUsers[i].Capital);
             }
         }
     }
@@ -37,6 +39,7 @@ namespace ConsoleApplication1
     {
         public string country;
         public string Capital;
+        List<Counts> listOfUsers1 = new List<Counts>();
         public void One()
         {
             Country Capital = new Country();
@@ -72,11 +75,42 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-                Console.WriteLine("Добавление страны");
-                Console.WriteLine("Добавление отеля");
-                Console.WriteLine("Вывод всех отелей");
-                Console.WriteLine("Вывод всех стран");
-                Console.WriteLine("Выход из программы");
+            Hotel hotel = new Hotel();
+            Country country = new Country();
+            Counts counts = new Counts();
+            Hotels hotels = new Hotels();
+            int N = 0;
+            while (N != 5)
+            {
+                Console.WriteLine("Выберите действие");
+                Console.WriteLine("1) Добавление страны");
+                Console.WriteLine("2) Добавление отеля");
+                Console.WriteLine("3) Вывод всех отелей");
+                Console.WriteLine("4) Вывод всех стран");
+                Console.WriteLine("5) Выход из программы");
+                int n = Convert.ToInt32(Console.ReadLine());
+                switch (n)
+                {
+                    case 1:
+                        country.One();
+                        continue;
+                    case 2:
+                        hotel.Two();
+                        continue;
+                    case 3:
+                        hotel.Three();
+                        continue;
+                    case 4:
+                        country.Four();
+                        continue;
+                    case 5:
+                        N = 5;
+                        break;
+                    default:
+                        Console.WriteLine("Error");
+                        break;
+                }
+            }
         }
     }
 }
