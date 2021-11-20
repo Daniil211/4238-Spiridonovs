@@ -14,24 +14,26 @@ namespace ConsoleApplication1
         public string Opisanie;
         public Country Capital;
         Country country = new Country();
-        List<Hotels> listOfUsers = new List<Hotels>();
-        public void Two()
-        {
-            Console.Write("Название отеля: ");
-            Console.Write("Количество звезд: ");
-            Console.Write("Описание отеля: ");
-            Console.Write("Страна:");
-            List<Hotels> listOfUsers = new List<Hotels>()
-            {
-                new Hotels() { Name = Console.ReadLine(), StarNumber = Console.ReadLine(), Opisanie = Console.ReadLine(), Capital = Console.ReadLine() },
-            };
-        }
-        public void Three()
+   
+        public List<string> listOfUsers = new List<string>();
+        public void hoteladd()
         {
             Hotel hotel = new Hotel();
-            for (int i = 0; i < hotel.listOfUsers.Count; i++)
+            Console.WriteLine("Название отеля: ");
+            Name = Console.ReadLine();
+            Console.WriteLine("Количество звезд: ");
+            StarNumber = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Описание отеля: ");
+            Opisanie = Console.ReadLine();
+            Console.WriteLine("Страна:");
+            string Strana = Console.ReadLine();
+            listOfUsers.Add(Name + " " + StarNumber + " " + Opisanie + " " + Strana);
+        }
+        public void hotelviewing()
+        {
+            for (int i = 0; i < listOfUsers.Count; i++)
             {
-                Console.WriteLine(listOfUsers[i].Name + " " + listOfUsers[i].StarNumber + " " + listOfUsers[i].Opisanie + " " + listOfUsers[i].Capital);
+                Console.WriteLine(listOfUsers[i]);
             }
         }
     }
@@ -39,24 +41,22 @@ namespace ConsoleApplication1
     {
         public string country;
         public string Capital;
-        List<Counts> listOfUsers1 = new List<Counts>();
-        public void One()
+        public List<string> listOfUsers1 = new List<string>();
+        public void countryadd()
         {
             Country Capital = new Country();
-            Console.Write("Название страны: ");
-            Console.Write("Название столицы: ");
-            List<Counts> listOfUsers1 = new List<Counts>()
-            {
-            new Counts() { Country = Console.ReadLine(), Capital = Console.ReadLine() },
-            };
+            Console.WriteLine("Название страны: ");
+            country = Console.ReadLine();
+            Console.WriteLine("Название столицы: ");
+            string NCapital = Console.ReadLine();
+            listOfUsers1.Add(country + " " + NCapital);
         }
-        public void Four()
+        public void contryviewing()
         {
             for (int i = 0; i < listOfUsers1.Count; i++)
             {
-                Console.WriteLine(listOfUsers1[i].Country + " " + listOfUsers1[i].Capital);
+                Console.WriteLine(listOfUsers1[i]);
             }
-            Console.ReadKey();
         }
     }
     class Counts
@@ -83,33 +83,35 @@ namespace ConsoleApplication1
             while (N != 5)
             {
                 Console.WriteLine("Выберите действие");
-                Console.WriteLine("1) Добавление страны");
-                Console.WriteLine("2) Добавление отеля");
-                Console.WriteLine("3) Вывод всех отелей");
-                Console.WriteLine("4) Вывод всех стран");
-                Console.WriteLine("5) Выход из программы");
+                Console.WriteLine("1. Добавление страны");
+                Console.WriteLine("2. Добавление отеля");
+                Console.WriteLine("3. Вывод всех отелей");
+                Console.WriteLine("4. Вывод всех стран");
+                Console.WriteLine("5. Закончить работу программы");
                 int n = Convert.ToInt32(Console.ReadLine());
-                switch (n)
+                if (n == 1)
                 {
-                    case 1:
-                        country.One();
-                        continue;
-                    case 2:
-                        hotel.Two();
-                        continue;
-                    case 3:
-                        hotel.Three();
-                        continue;
-                    case 4:
-                        country.Four();
-                        continue;
-                    case 5:
-                        N = 5;
-                        break;
-                    default:
-                        Console.WriteLine("Error");
-                        break;
+                    country.countryadd();
                 }
+                else if (n == 2)
+                {
+                    hotel.hoteladd();
+                }
+                else if (n == 3)
+                {
+                    hotel.hotelviewing();
+                }
+                else if (n == 4)
+                {
+                    country.contryviewing();
+                }
+                else if (n == 5)
+                {
+                    break;
+                }
+                else
+                    Console.WriteLine("Недопустимое значение");
+            
             }
         }
     }
